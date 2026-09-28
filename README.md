@@ -293,7 +293,7 @@ ForgeSpec OS is not intended to make an agent verbose or bureaucratic. Its goal 
 
 The standard should cause the agent to **think deeply where failure is expensive, act quickly when the next safe action is clear, and prove completion instead of declaring it.**
 
-## v1.3 highlights
+## v1.0.0 highlights
 
 - task-scoped ForgeSpec Skill Router instead of global skill preloading;
 - curated GitHub provider registry for UI/UX, browser/E2E, accessibility, performance, component testing, SAST/SCA/DAST, supply-chain, skill security, and AI/LLM security;
