@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "forgespec_version": "1.3.0",
+  "researched_at": "2026-09-28",
+  "policy": "External providers are optional, pinned, reviewed dependencies. Product SPEC and ForgeSpec invariants retain authority.",
+  "providers": [
+    {
+      "id": "anthropic-frontend-design",
+      "repo": "https://github.com/anthropics/claude-code",
+      "category": [
+        "ui",
+        "design"
+      ],
+      "role": "maker",
+      "default": false
+    },
+    {
+      "id": "impeccable",
+      "repo": "https://github.com/pbakaus/impeccable",
+      "category": [
+        "ui",
+        "design",
+        "review"
+      ],
+      "role": "maker-checker",
+      "default": false
+    },
+    {
+      "id": "vercel-web-design-guidelines",
+      "repo": "https://github.com/vercel-labs/agent-skills",
+      "category": [
+        "ui",
+        "ux",
+        "review"
+      ],
+      "role": "checker",
+      "default": false
+    },
+    {
+      "id": "addy-frontend-ui-engineering",
+      "repo": "https://github.com/addyosmani/agent-skills",
+      "category": [
+        "ui",
+        "engineering"
+      ],
+      "role": "maker",
+      "default": false
+    },
+    {
+      "id": "addy-web-quality",
+      "repo": "https://github.com/addyosmani/web-quality-skills",
+      "category": [
+        "performance",
+        "accessibility",
+        "seo",
+        "quality"
+      ],
+      "role": "checker",
+      "default": false
+    },
+    {
+      "id": "playwright",
+      "repo": "https://github.com/microsoft/playwright",
+      "category": [
+        "e2e",
+        "browser"
+      ],
+      "role": "evidence-provider",
+      "default": false
+    },
+    {
+      "id": "axe-core",
+      "repo": "https://github.com/dequelabs/axe-core",
+      "category": [
+        "accessibility"
+      ],
+      "role": "evidence-provider",
+      "default": false
+    },
+    {
+      "id": "storybook",
+      "repo": "https://github.com/storybookjs/storybook",
+      "category": [
+        "ui",
+        "component-testing"
+      ],
+      "role": "evidence-provider",
+      "default": false
+    },
+    {
+      "id": "semgrep",
+      "repo": "https://github.com/semgrep/semgrep",
+      "category": [
+        "security",
+        "sast"
+      ],
+      "role": "evidence-provider",
+      "default": false
+    },
+    {
+      "id": "osv-scanner",
+      "repo": "https://github.com/google/osv-scanner",
+      "category": [
+        "security",
+        "sca"
+      ],
+      "role": "evidence-provider",
+      "default": false
+    },
+    {
+      "id": "trivy",
+      "repo": "https://github.com/aquasecurity/trivy",
+      "category": [
+        "security",
+        "container",
+        "secrets",
+        "misconfiguration"
+      ],
+      "role": "evidence-provider",
+      "default": false
+    },
+    {
+      "id": "zaproxy",
+      "repo": "https://github.com/zaproxy/zaproxy",
+      "category": [
+        "security",
+        "dast"
+      ],
+      "role": "evidence-provider",
+      "default": false
+    },
+    {
+      "id": "nuclei",
+      "repo": "https://github.com/projectdiscovery/nuclei",
+      "category": [
+        "security",
+        "vulnerability-detection"
+      ],
+      "role": "conditional-evidence-provider",
+      "default": false
+    },
+    {
+      "id": "skillspector",
+      "repo": "https://github.com/NVIDIA/SkillSpector",
+      "category": [
+        "agent-security",
+        "skill-security"
+      ],
+      "role": "gate",
+      "default": false
+    },
+    {
+      "id": "garak",
+      "repo": "https://github.com/NVIDIA/garak",
+      "category": [
+        "ai-security",
+        "llm"
+      ],
+      "role": "conditional-evidence-provider",
+      "default": false
+    },
+    {
+      "id": "superpowers",
+      "repo": "https://github.com/obra/superpowers",
+      "category": [
+        "process",
+        "skill-evaluation"
+      ],
+      "role": "methodology-reference",
+      "default": false
+    }
+  ]
+}
