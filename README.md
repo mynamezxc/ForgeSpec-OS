@@ -1,260 +1,549 @@
-# ForgeSpec OS
+<div align="center">
 
-## Production Engineering & Agent Execution Standard
+# ⚒️ ForgeSpec OS
 
-ForgeSpec OS is a reusable engineering standard for turning product intent into production-grade specifications and for governing AI coding agents through implementation, verification, context compression, subagent coordination, testing, release, and operational readiness.
+### Production Engineering & Agent Execution Standard
 
-It is designed around a simple separation of authority:
+**GOAL-DRIVEN · EVIDENCE-GATED · CONTEXT-RESILIENT**
 
-> **ForgeSpec OS defines how engineering work is executed. Product SPEC defines what the product must become.**
+[![Version](https://img.shields.io/badge/version-v1.0.1-2563eb?style=for-the-badge)](#-release-v101)
+[![Agent First](https://img.shields.io/badge/agent--first-execution-111827?style=for-the-badge)](#-agent-first-architecture)
+[![Production](https://img.shields.io/badge/target-production--ready-16a34a?style=for-the-badge)](#-production-definition-of-done)
+[![Evidence](https://img.shields.io/badge/completion-evidence--required-f59e0b?style=for-the-badge)](#-evidence-gated-completion)
 
-This separation prevents a global agent rulebook from quietly rewriting domain behavior while still enforcing production discipline across very different projects.
+**A reusable operating standard for turning product intent into production-grade specifications and driving coding agents from the first task to verified end-to-end delivery.**
 
-**Current version:** 1.3.0
+[Quick Use](#-quick-use) · [How It Works](#-how-it-works) · [Ratings](#-framework-coverage-rating) · [Benchmarks](#-modeled-efficiency-targets) · [Structure](#-repository-structure)
 
----
-
-## Why ForgeSpec OS exists
-
-Coding agents are very effective at producing code, but long-running software projects expose recurring failure modes:
-
-- declaring completion when only the UI or happy path exists;
-- using hardcoded data, mocks, or stubs as if they were production integrations;
-- losing critical decisions after context compression;
-- repeatedly re-planning work that was already decided;
-- spawning subagents without clear ownership or verifiable outputs;
-- running either too few tests or the entire expensive suite after every tiny change;
-- changing shared contracts without impact analysis;
-- ignoring migrations, rollback, observability, permissions, admin flows, or operator recovery;
-- optimizing a generic architecture instead of the actual product;
-- stopping because a task is large rather than because the requested scope is actually complete.
-
-ForgeSpec OS converts these failure modes into explicit engineering contracts, evidence requirements, task states, checkpoints, verification gates, and recovery procedures.
+</div>
 
 ---
 
-## Core architecture
+## 🧭 What is ForgeSpec OS?
+
+ForgeSpec OS is an **agent execution and production engineering standard** for long-running software projects.
+
+It is built around one strict separation of authority:
+
+> **ForgeSpec OS defines HOW engineering work must be executed.**  
+> **Product SPEC defines WHAT the product must become.**
+
+That distinction is deliberate. ForgeSpec can enforce engineering discipline without silently changing a product's business model, architecture, workflows, domain rules, or intended user experience.
+
+ForgeSpec OS focuses on the failure modes that repeatedly appear in autonomous coding work:
+
+- stopping after the first valid slice while mandatory scope remains;
+- declaring a UI, prototype, mock, or hardcoded path "done";
+- losing project state after context compression;
+- re-planning instead of continuing execution;
+- collapsing a multi-industry or multi-channel requirement into one example implementation;
+- spawning subagents without ownership, acceptance criteria, or integration control;
+- over-testing tiny changes while still missing release-critical E2E paths;
+- ignoring permissions, migrations, rollback, observability, support, and recovery;
+- treating a local blocker as a reason to stop unrelated executable work;
+- trusting agent confidence instead of requiring verifiable evidence.
+
+ForgeSpec converts those failure modes into **state machines, scope inventories, task graphs, evidence obligations, context checkpoints, specialist skills, quality gates, and release controls**.
+
+---
+
+## ⚡ Quick Use
+
+### 1. Create a production Product SPEC
+
+Give the agent the `FORGESPEC_OS/` folder and your product idea, then use:
 
 ```text
-Product Idea / Existing Product
-            |
-            v
-+------------------------------+
-| ForgeSpec SPEC Factory       |
-| research / critique /        |
-| benchmark / requirements     |
-+------------------------------+
-            |
-            v
-+------------------------------+
-| Product SPEC                 |
-| WHAT must be built           |
-+------------------------------+
-            |
-            +---------------------------+
-            |                           |
-            v                           v
-+------------------------------+   +------------------------------+
-| ForgeSpec Agent Runtime      |   | ForgeSpec Governance         |
-| task graph / context /       |   | precedence / scope / DoD /   |
-| subagents / recovery         |   | stop rules / evidence        |
-+------------------------------+   +------------------------------+
-            |                           |
-            +-------------+-------------+
-                          v
-              +--------------------------+
-              | Engineering Execution    |
-              | implementation / data /  |
-              | APIs / reliability       |
-              +--------------------------+
-                          |
-                          v
-              +--------------------------+
-              | Quality & Verification   |
-              | targeted -> integration  |
-              | -> E2E -> release gate   |
-              +--------------------------+
-                          |
-                          v
-              +--------------------------+
-              | Production Operations    |
-              | deploy / rollback /      |
-              | observability / support  |
-              +--------------------------+
+FORGESPEC_OS/PROMPT_BUILD_PRODUCT_SPEC.md
+```
+
+Expected result:
+
+```text
+SPEC/<product-name>/
+└── PRODUCT_SPEC_ENTRYPOINT.md
+    + domain / architecture / UX / quality / delivery / operations docs
+```
+
+### 2. Start the coding agent
+
+The coding agent must begin with:
+
+```text
+FORGESPEC_OS/AGENT_ENTRYPOINT.md
+```
+
+Then use:
+
+```text
+FORGESPEC_OS/AGENT_START_PROMPT.md
+```
+
+The agent loads only relevant rules through:
+
+```text
+FORGESPEC_OS/AGENT_FILE_INDEX.md
+```
+
+### 3. Let the Project Goal control completion
+
+The agent must maintain the full requested delivery as the root state:
+
+```text
+PROJECT GOAL
+   ↓
+Scope inventory
+   ↓
+Task graph
+   ↓
+Implement → Verify → Record evidence
+   ↓
+Mandatory work remains?
+   ├─ YES → select next executable task → continue
+   └─ NO  → run release gates
+                 ↓
+          PRODUCTION_READY
+```
+
+**A finished task is not a finished project. A finished milestone is not a finished release.**
+
+---
+
+## ⭐ Framework Coverage Rating
+
+> These ratings describe **ForgeSpec's built-in control coverage**, not an independent third-party quality score and not measured runtime performance.
+
+| Area | Coverage | What ForgeSpec provides |
+|---|:---:|---|
+| 🎯 Goal continuity | ★★★★★ | Project Goal root state, terminal predicate, continuation controller |
+| 🧩 Scope preservation | ★★★★★ | Requirement inventory, variant closure, anti-scope-collapse rules |
+| 🧠 Context resilience | ★★★★★ | Hot/warm/cold context, checkpoints, compression recovery |
+| 🤖 Subagent orchestration | ★★★★★ | Bounded ownership, task packets, return evidence, integration authority |
+| ✅ Completion integrity | ★★★★★ | Definition of Done, proof obligations, evidence ledger, release gates |
+| 🧪 Test discipline | ★★★★★ | Targeted → integration → E2E → release cadence based on risk |
+| 🎨 UI/UX quality routing | ★★★★☆ | Task-scoped design, accessibility, browser and component quality skills |
+| 🛡️ Security coverage | ★★★★☆ | SAST/SCA/DAST, supply-chain, skill security, AI/LLM security profiles |
+| 📈 Operational readiness | ★★★★★ | Observability, deployment, rollback, migration, incident readiness |
+| 📊 Empirical benchmark maturity | ★★★☆☆ | Benchmark protocol and modeled targets; project-specific measurements required |
+
+---
+
+## 🧱 Fixed Logic
+
+These are non-negotiable execution invariants across projects.
+
+### 01 — Product intent remains authoritative
+
+ForgeSpec must not silently replace explicit Product SPEC choices with generic framework preferences.
+
+### 02 — `DONE` requires evidence
+
+Agent confidence, a screenshot, a successful build, or a prose summary is not sufficient proof of production completion.
+
+### 03 — UI-only is not end-to-end
+
+If a feature requires backend logic, persistence, permissions, integrations, jobs, sync, observability, or operational behavior, those paths must exist and be verified.
+
+### 04 — Mocked required behavior is not final behavior
+
+Mocks, fixtures, placeholders, hardcoded records, fake APIs, and temporary fallbacks cannot masquerade as completed production implementation.
+
+### 05 — Task completion always reconciles the Project Goal
+
+```text
+TASK_DONE
+   ≠
+MILESTONE_DONE
+   ≠
+PROJECT_DONE
+```
+
+After a task or milestone completes, the agent returns to **next-task selection** unless the entire Project Goal terminal predicate is satisfied.
+
+### 06 — Known remaining work forces continuation
+
+If the agent can name executable mandatory work that remains, the Project Goal cannot be terminal.
+
+### 07 — Explicit scope lists cannot silently shrink
+
+Industries, roles, channels, modules, integrations, locales, device classes, plans, or other named scope variants must remain individually traceable until closed or explicitly removed from scope.
+
+### 08 — Context compression is state transfer
+
+Compression must preserve the active goal, completed work, decisions, blockers, changed files, evidence state, and next executable action.
+
+### 09 — Blockers are scoped
+
+A local environment or task-specific blocker does not stop unrelated executable work.
+
+### 10 — Release completion belongs to release gates
+
+Only verified scope closure plus applicable release gates can transition the Project Goal to `PRODUCTION_READY`.
+
+---
+
+## 🧠 Agent-First Architecture
+
+`README.md` is intentionally written for GitHub visitors. **Agents do not use this file as their primary instruction source.**
+
+```text
+GitHub / Human Entry
+        │
+        └── README.md
+
+Agent Entry
+        │
+        ├── AGENT_ENTRYPOINT.md
+        │       ↓
+        ├── AGENT_FILE_INDEX.md
+        │       ↓
+        ├── Product SPEC / PRODUCT_SPEC_ENTRYPOINT.md
+        │       ↓
+        └── AGENT_START_PROMPT.md
+                ↓
+         Project Goal Controller
+                ↓
+         Task / Subagent Runtime
+                ↓
+         Verification + Evidence
+                ↓
+            Release Gates
+```
+
+This separation reduces accidental instruction pollution from public-facing documentation.
+
+---
+
+## 🔄 How It Works
+
+```text
+Idea / Existing Product
+        │
+        ▼
+┌───────────────────────────────┐
+│  ForgeSpec SPEC Factory       │
+│  research · critique ·        │
+│  benchmark · requirements     │
+└───────────────────────────────┘
+        │
+        ▼
+┌───────────────────────────────┐
+│  Product SPEC                 │
+│  WHAT must be built           │
+└───────────────────────────────┘
+        │
+        ▼
+┌───────────────────────────────┐
+│  Project Goal                 │
+│  complete requested delivery  │
+└───────────────────────────────┘
+        │
+        ├──────────────┐
+        ▼              ▼
+┌───────────────┐  ┌───────────────┐
+│ Agent Runtime │  │ Governance    │
+│ tasks/context │  │ scope/DoD     │
+│ subagents     │  │ evidence      │
+└───────────────┘  └───────────────┘
+        │              │
+        └──────┬───────┘
+               ▼
+┌───────────────────────────────┐
+│ Engineering Execution         │
+│ domain · data · API · UI      │
+│ integration · reliability     │
+└───────────────────────────────┘
+               │
+               ▼
+┌───────────────────────────────┐
+│ Quality & Verification        │
+│ targeted → integration → E2E │
+│ security → release evidence  │
+└───────────────────────────────┘
+               │
+               ▼
+┌───────────────────────────────┐
+│ Production Operations         │
+│ deploy · migrate · rollback   │
+│ observe · support · recover   │
+└───────────────────────────────┘
+               │
+               ▼
+        PRODUCTION_READY
 ```
 
 ---
 
-## Fixed logic: non-negotiable invariants
+## 🎯 Project Goal Controller
 
-These rules are intentionally stable across projects:
+v1.0.1 strengthens autonomous continuation around a single rule:
 
-1. **Product intent has authority over product design.** ForgeSpec OS must not silently replace explicit Product SPEC choices.
-2. **`DONE` requires evidence.** Confidence, screenshots, or an agent statement are not completion proof.
-3. **UI-only is not production completion** when backend, persistence, permissions, integration, or operational behavior is required.
-4. **Hardcoded, mocked, or stubbed required behavior cannot masquerade as the final implementation.**
-5. **Requirements remain traceable** to tasks, implementation, tests, and acceptance evidence.
-6. **Context compression is a state transfer, not a reset.** Checkpoint before compression; recover from checkpoint plus repository truth.
-7. **Subagents have bounded ownership.** Their output must be independently inspectable and integrated by the main agent.
-8. **Testing is risk-based and staged.** Expensive suites are not spammed after every micro-change, and critical checks are not skipped to save time.
-9. **Shared changes require blast-radius analysis**, including callers, compatibility, migration, deployment ordering, and rollback.
-10. **A blocker is scoped.** One blocked task does not stop unrelated executable work.
-11. **Production concerns are part of the product when applicable:** security, observability, configuration, migration, rollback, support, and debug paths.
-12. **Global rules cannot pollute product scope.** Conditional capabilities activate only when the Product SPEC requires them.
+> **The current task is an execution unit. The Project Goal is the delivery boundary.**
+
+After every completed task:
+
+```text
+Complete task
+   ↓
+Verify task acceptance criteria
+   ↓
+Record evidence
+   ↓
+Reconcile requirement + scope coverage
+   ↓
+Check release-critical blockers
+   ↓
+Select next executable mandatory task
+   ↓
+Continue
+```
+
+The agent may stop the full execution loop only when one of these is true:
+
+1. the complete bounded Product SPEC passes applicable release gates;
+2. the user explicitly stops, pauses, or changes the requested scope;
+3. a genuine global external blocker makes all remaining mandatory work non-executable.
+
+Host-imposed turn, token, or tool boundaries become `CONTINUATION_REQUIRED`, with the exact next executable action persisted before handoff.
 
 ---
 
-## Agent-first document layout
+## 🧠 Context Optimization
 
-`README.md` is intentionally public-facing. Agents should start with `AGENT_ENTRYPOINT.md` instead.
+ForgeSpec treats context as a limited engineering resource.
+
+### Hot context
+
+Current task, active contracts, relevant files, nearby tests, and immediate dependencies.
+
+### Warm context
+
+Current subsystem architecture, recent decisions, adjacent tasks, shared interfaces.
+
+### Cold context
+
+Completed history, superseded investigation, older evidence, archived decisions.
+
+Before context compression, ForgeSpec preserves durable execution state such as:
+
+```text
+WORKLOG/
+├── PROJECT_GOAL.md
+├── EXECUTION_STATE.md
+└── CHECKPOINT.md
+```
+
+After compression, recovery follows persisted state and repository truth instead of re-planning the project from scratch.
+
+---
+
+## 🤖 Subagent Orchestration
+
+Subagents are used for **bounded parallel work**, not uncontrolled extra reasoning.
+
+Each subagent receives:
+
+- objective;
+- in-scope and non-goal boundaries;
+- owned files/modules;
+- relevant contracts;
+- dependencies;
+- expected outputs;
+- acceptance criteria;
+- required evidence;
+- return format.
+
+The main agent retains **integration authority** and does not accept a subagent's self-declared completion without verification.
+
+---
+
+## 🛠️ Specialist Skill System
+
+ForgeSpec uses a task-scoped Skill Router rather than loading every specialist capability into every agent session.
+
+```text
+Current task
+   ↓
+Capability detection
+   ↓
+Minimum relevant ForgeSpec skill(s)
+   ↓
+Optional reviewed + pinned external provider
+   ↓
+Measured / inspectable evidence
+   ↓
+Independent acceptance
+```
+
+Built-in skill profiles cover:
+
+- 🎨 UI/UX and interface craft;
+- 🌐 browser/E2E verification;
+- ♿ accessibility;
+- ⚡ web quality and performance;
+- 🧩 component quality;
+- 🛡️ application security;
+- 📦 software supply chain;
+- 🧠 AI/LLM security;
+- 🔍 external agent-skill inspection;
+- 🚀 release verification.
+
+Curated optional providers include tooling and methodologies from ecosystems such as Playwright, axe-core, Storybook, Lighthouse, Semgrep, OSV-Scanner, Trivy, ZAP, Nuclei, NVIDIA SkillSpector, NVIDIA garak, and specialist UI/design guidance.
+
+**External popularity is not trust.** ForgeSpec requires provenance review, permission/script inspection, controlled activation, version/commit pinning where reproducibility matters, and re-validation after material updates.
+
+---
+
+## 🧪 Testing Strategy
+
+ForgeSpec avoids both extremes: **under-testing** and **running the full suite after every tiny edit**.
+
+```text
+Code change
+   ↓
+Targeted test
+   ↓
+Coherent task / contract boundary
+   ↓
+Integration test
+   ↓
+Meaningful task batch OR high-risk change
+   ↓
+Critical E2E / regression
+   ↓
+Release boundary
+   ↓
+Full applicable release suite
+```
+
+High-risk changes can expand verification earlier, including:
+
+- authentication and authorization;
+- tenant isolation;
+- payments and financial logic;
+- migrations and destructive data changes;
+- shared contracts;
+- concurrency and idempotency;
+- synchronization/offline logic;
+- security-critical surfaces;
+- cross-module platform behavior.
+
+---
+
+## ✅ Production Definition of Done
+
+A release is not considered production-ready merely because it builds or launches.
+
+Applicable completion evidence may include:
+
+- requirement traceability;
+- business-invariant verification;
+- real integration paths;
+- persistence correctness;
+- authorization and negative permission tests;
+- migration safety;
+- error and recovery behavior;
+- observability;
+- targeted, integration and E2E tests;
+- security checks;
+- realistic UI states;
+- deployment readiness;
+- rollback readiness;
+- operational runbooks;
+- release-gate evidence.
+
+---
+
+## 🔎 Evidence-Gated Completion
+
+For a production workflow, ForgeSpec expects proof across the applicable real path:
+
+```text
+Input
+  → Validation
+  → Authorization
+  → Domain Logic
+  → Persistence / Integration
+  → Result
+  → Consumer / UI
+  → Observability
+```
+
+Not every feature requires every stage, but **every stage required by the Product SPEC must be real, connected, and verifiable**.
+
+---
+
+## 📊 Modeled Efficiency Targets
+
+> The values below are **engineering targets**, not empirical claims. Actual results depend on repository size, model behavior, tool latency, test duration, task separability, and Product SPEC quality. ForgeSpec includes a benchmark protocol so each project can replace these estimates with measured data.
+
+| Workflow dimension | Typical unstructured long-run behavior | ForgeSpec modeled target |
+|---|---|---|
+| Context rehydration after compression | broad re-read and partial re-planning | ~15–35% of the previous context payload with a healthy checkpoint |
+| Re-discovery after compression | repeated subsystem inspection | ~50–80% lower on stable milestones |
+| Unnecessary expensive E2E/full-regression runs | frequent or inconsistent | ~60–85% fewer while preserving risk/release gates |
+| Parallel throughput for separable work | mostly serial | ~1.3×–2.5× potential task throughput with bounded subagents |
+| Critical requirement traceability | ad hoc | target: 100% mapped to evidence or explicit unresolved status |
+| Release-critical fake-done detection | agent self-assessment | target: explicit proof obligations for all release-critical flows |
+| Context sent to specialist subagents | broad project history | task-scoped context packet only |
+
+Project-specific validation should use:
+
+```text
+02_SPEC_FACTORY/03_REALITY_BENCHMARK_PROTOCOL.md
+04_QUALITY/04_PERFORMANCE_CAPACITY_AND_COST_VALIDATION.md
+```
+
+---
+
+## 🗂️ Repository Structure
 
 ```text
 FORGESPEC_OS/
-├── README.md                         # GitHub/public overview
-├── AGENT_ENTRYPOINT.md               # first file an agent reads
-├── AGENT_START_PROMPT.md             # coding/continuation prompt
-├── PROMPT_BUILD_PRODUCT_SPEC.md      # idea -> production SPEC prompt
-├── CAPABILITY_ACTIVATION_MATRIX.md
-├── AGENT_FILE_INDEX.md
+├── README.md                         # public GitHub overview
+├── AGENT_ENTRYPOINT.md               # mandatory first agent document
+├── AGENT_FILE_INDEX.md               # selective rule loading
+├── AGENT_START_PROMPT.md             # implementation / continuation prompt
+├── PROMPT_BUILD_PRODUCT_SPEC.md      # idea → production Product SPEC
+├── CAPABILITY_ACTIVATION_MATRIX.md   # conditional profile activation
 ├── FORGESPEC_OS_REVIEW_CHECKLIST.md
+├── CHANGELOG.md
+├── RELEASE_NOTES_v1.0.1.md
+├── PACKAGE_MANIFEST.json
 ├── forgespec-policy.json
-├── 00_GOVERNANCE/
-├── 01_AGENT_RUNTIME/
-├── 02_SPEC_FACTORY/
-├── 03_ENGINEERING/
-├── 04_QUALITY/
-├── 05_OPERATIONS/
-└── 06_TEMPLATES/
+│
+├── 00_GOVERNANCE/                    # precedence, scope, DoD, release logic
+├── 01_AGENT_RUNTIME/                 # tasks, subagents, context, continuation
+├── 02_SPEC_FACTORY/                  # product-spec generation and benchmarking
+├── 03_ENGINEERING/                   # implementation and architecture discipline
+├── 04_QUALITY/                       # tests, evidence, security, validation
+├── 05_OPERATIONS/                    # deployment, rollback, observability
+├── 06_TEMPLATES/                     # reusable execution artifacts
+├── 07_SKILLS/                        # specialist skill routing and security gates
+└── 08_FAILURE_PATTERNS/              # regression patterns from real failures
 ```
 
-A repository using ForgeSpec OS can use:
+Recommended project integration:
 
 ```text
-/repo
-├── /FORGESPEC_OS
-├── /SPEC
-│   └── /<product-name>
+/repository
+├── FORGESPEC_OS/
+├── SPEC/
+│   └── <product-name>/
 │       └── PRODUCT_SPEC_ENTRYPOINT.md
-├── /src
-├── /tests
-└── /tools
+├── src/
+├── tests/
+└── tools/
 ```
 
 ---
 
+## 🚫 What ForgeSpec Does Not Dictate
 
-## Curated specialist skill ecosystem
+ForgeSpec OS deliberately does **not** force a specific:
 
-ForgeSpec OS 1.3 adds a task-scoped skill router for UI/UX, browser verification, accessibility, web quality, security, supply-chain review, AI/LLM security, and release verification.
-
-The design deliberately avoids copying a large external skill pack into every agent session. Instead:
-
-```text
-Task
-  -> ForgeSpec Skill Router
-  -> minimum specialist skill(s)
-  -> optional pinned GitHub provider/tool
-  -> measured / inspectable evidence
-  -> independent acceptance
-```
-
-Curated upstream providers currently include:
-
-- Anthropic frontend-design, Impeccable, Vercel web-design-guidelines, and Addy Osmani frontend-ui-engineering for complementary UI/design roles;
-- Addy Osmani web-quality-skills, Lighthouse, axe-core, Playwright, and Storybook for measured web/component quality;
-- Semgrep, OSV-Scanner, Trivy, ZAP, and conditional Nuclei for layered application and supply-chain security;
-- NVIDIA SkillSpector for pre-install review of external agent skills;
-- NVIDIA garak for conditional AI/LLM security evaluation;
-- Superpowers methodology as a reference for pressure-testing skill behavior.
-
-Third-party skills are **not trusted merely because they are popular or on GitHub**. ForgeSpec requires provenance review, permission/script inspection, version pinning for reproducible production work, and re-validation after material updates. See `07_SKILLS/`.
-
-## Production SPEC Factory
-
-`PROMPT_BUILD_PRODUCT_SPEC.md` converts an idea into a separate, implementation-grade Product SPEC without starting product code prematurely.
-
-The SPEC Factory requires the specification agent to:
-
-- preserve explicit product intent and differentiators;
-- separate facts, requirements, assumptions, and unresolved questions;
-- analyze domain workflows before selecting architecture;
-- self-critique for contradictions, scale failures, permissions, concurrency, offline/network behavior, operational cost, migration traps, and UX gaps;
-- benchmark against realistic products, workflows, and measurable constraints when useful;
-- model canonical states, business rules, permissions, data ownership, APIs, jobs, events, and sync contracts where applicable;
-- define objective acceptance criteria and requirement-to-evidence mapping;
-- plan real vertical slices rather than a fake UI-only MVP;
-- include release gates, observability, rollback, supportability, and production operations.
-
----
-
-## Context optimization
-
-ForgeSpec OS treats model context as an engineering resource rather than an unlimited scratchpad.
-
-The runtime separates information into **hot**, **warm**, and **cold** context, requires a compact execution checkpoint before compression, and restores work from recorded state instead of re-reading or re-planning the whole project.
-
-Expected benefits include:
-
-- less repeated repository discovery;
-- less duplicated architecture reasoning;
-- smaller subagent context packets;
-- more deterministic continuation after context compression;
-- lower risk of silently dropping requirements during long sessions.
-
----
-
-## Subagent model
-
-Subagents are used for parallelizable, bounded work rather than as unstructured extra reasoning capacity.
-
-Each assignment defines objective, non-goals, ownership boundaries, contracts, expected evidence, and return format. The main agent retains integration authority and verifies the result before accepting it.
-
-This model is intended to improve parallel throughput while reducing merge conflicts, duplicated implementation, and false completion signals.
-
----
-
-## Testing strategy
-
-ForgeSpec OS uses an adaptive test cadence:
-
-```text
-change
-  -> targeted test
-  -> coherent task / contract boundary
-  -> integration test
-  -> 3-7 meaningful tasks or high-risk change
-  -> critical E2E / regression
-  -> release gate
-  -> full applicable release suite
-```
-
-The exact cadence is risk-sensitive. Authentication, migrations, shared contracts, concurrency, financial logic, permissions, and other high-blast-radius changes can trigger broader verification earlier.
-
----
-
-## Estimated workflow benchmarks
-
-The values below are **modeled engineering targets, not empirical benchmark claims**. Actual results depend on repository size, model, tool latency, test runtime, task separability, and Product SPEC quality. ForgeSpec OS includes a reality-benchmark protocol so projects can replace these estimates with measured data.
-
-| Workflow dimension | Unstructured long-running agent baseline | ForgeSpec OS modeled target | Why improvement is plausible |
-|---|---|---|---|
-| Context rehydration after compression | broad re-read / partial re-planning | ~15–35% of prior context payload for a well-maintained checkpoint | hot/warm/cold loading plus explicit checkpoint state |
-| Re-discovery/re-planning effort after compression | repeated subsystem inspection | ~50–80% lower on stable milestones | decisions, changed files, tests, blockers, and next action are persisted |
-| Expensive E2E/full-regression invocations in multi-task milestones | often run after every change or inconsistently | ~60–85% fewer unnecessary expensive runs while preserving release gates | targeted/integration checks absorb low-risk feedback; broad suites run by batch/risk |
-| Parallel throughput for separable work | single-agent serial execution | ~1.3x–2.5x potential task throughput | bounded subagent ownership can parallelize independent work; integration remains centralized |
-| Requirement traceability at release | ad hoc | target: 100% of critical requirements mapped to evidence or explicit unresolved status | acceptance matrix + evidence ledger + completion audit |
-| Fake-done detection | dependent on agent self-assessment | target: all release-critical flows pass explicit proof obligations | completion state requires real-path evidence rather than prose confidence |
-| Context sent to a subagent | broad project history | task-scoped packet only | ownership, contracts, non-goals, and acceptance criteria constrain the payload |
-
-These estimates should be validated per project using `02_SPEC_FACTORY/03_REALITY_BENCHMARK_PROTOCOL.md` and `04_QUALITY/04_PERFORMANCE_CAPACITY_AND_COST_VALIDATION.md`.
-
----
-
-## What ForgeSpec OS deliberately does not dictate
-
-ForgeSpec OS does not force a specific:
-
-- language or framework;
+- programming language;
+- frontend/backend framework;
 - database;
 - cloud provider;
 - UI toolkit;
@@ -262,42 +551,59 @@ ForgeSpec OS does not force a specific:
 - queue or event broker;
 - monolith/microservice architecture;
 - AI provider;
-- offline-first architecture;
-- hardware stack.
+- offline-first model;
+- hardware platform.
 
-Those are product decisions. ForgeSpec OS only provides conditional engineering profiles and quality obligations when the Product SPEC activates the relevant capability.
+Those decisions belong to the Product SPEC and project constraints.
 
----
-
-## Quick start
-
-### Build a new Product SPEC
-
-1. Give the agent the `FORGESPEC_OS` folder.
-2. Start from `AGENT_ENTRYPOINT.md`.
-3. Use `PROMPT_BUILD_PRODUCT_SPEC.md` with the product idea appended.
-4. Review the generated Product SPEC and unresolved decisions.
-
-### Start implementation
-
-1. Keep `FORGESPEC_OS` and the target `/SPEC/<product-name>` in the repository/workspace.
-2. Start the coding agent with `AGENT_START_PROMPT.md`.
-3. Require the agent to maintain the task graph, checkpoint, requirement coverage, and evidence state throughout execution.
-4. Release only after the applicable production gates pass.
+ForgeSpec activates conditional engineering obligations only when the product requires them.
 
 ---
 
-## Design goal
+## 🧬 Design Principles
 
-ForgeSpec OS is not intended to make an agent verbose or bureaucratic. Its goal is the opposite: preserve only the reasoning and process that materially improve correctness, continuity, production readiness, and execution efficiency.
+| Principle | Meaning |
+|---|---|
+| **Goal-driven** | The root Project Goal controls termination, not the current task |
+| **Evidence-gated** | Completion requires inspectable proof |
+| **Context-resilient** | Long-running work survives compression and handoff |
+| **Product-authoritative** | Framework rules cannot silently redesign the product |
+| **Risk-adaptive** | Testing and review depth follow blast radius |
+| **Task-scoped** | Agents and skills load only relevant context/capabilities |
+| **Production-aware** | Migration, rollback, security, observability and operations are first-class |
+| **Bounded** | ForgeSpec finishes when the requested Product SPEC is actually complete |
 
-The standard should cause the agent to **think deeply where failure is expensive, act quickly when the next safe action is clear, and prove completion instead of declaring it.**
+---
 
-## v1.3 highlights
+## 🚀 Release v1.0.1
 
-- task-scoped ForgeSpec Skill Router instead of global skill preloading;
-- curated GitHub provider registry for UI/UX, browser/E2E, accessibility, performance, component testing, SAST/SCA/DAST, supply-chain, skill security, and AI/LLM security;
-- external skill provenance/security gate and pin/update policy;
-- ForgeSpec-owned provider-neutral `SKILL.md` modules with explicit evidence contracts;
-- pressure-testing methodology for validating skills themselves;
-- Product SPEC template support for a capability-first Skill and Tool Activation Plan.
+v1.0.1 focuses on preventing **false termination** in long-running autonomous coding sessions.
+
+### Highlights
+
+- 🎯 mandatory Project Goal and terminal-state contract;
+- 🔁 autonomous post-task and post-milestone continuation controller;
+- 🚧 known-remaining-work guard;
+- 🧩 explicit scope-enumeration preservation;
+- 🧱 task/milestone/workflow/release evidence separation;
+- ⛔ blocker classification so local limitations do not stop unrelated work;
+- 💾 `CONTINUATION_REQUIRED` semantics for host-imposed execution boundaries;
+- 🧪 behavioral regression tests for agent orchestration;
+- 🛠️ task-scoped specialist Skill Router;
+- 🔐 security gates for optional external agent skills and tools.
+
+See [`RELEASE_NOTES_v1.0.1.md`](./RELEASE_NOTES_v1.0.1.md) for the detailed release notes.
+
+---
+
+## 💡 The Core Idea
+
+<div align="center">
+
+### Think deeply where failure is expensive.
+### Execute decisively when the next safe action is clear.
+### Stop only when the requested goal is proven complete.
+
+**ForgeSpec OS — Goal-Driven · Evidence-Gated · Context-Resilient**
+
+</div>

@@ -22,6 +22,7 @@ This index is optimized for selective loading. Do not read every file on every t
 - `00_GOVERNANCE/04_PRODUCTION_READINESS_GATES.md` — release-level readiness gates.
 - `00_GOVERNANCE/05_RULE_CLASSIFICATION.md` — invariant/default/conditional-profile classification.
 - `00_GOVERNANCE/06_ANTI_FAKE_DONE_AND_ANTI_HARDCODE.md` — detects UI-only, hardcoded, mocked, stubbed, or disconnected false completion.
+- `00_GOVERNANCE/07_PROJECT_GOAL_AND_TERMINAL_STATE.md` — mandatory Project Goal, terminal predicate, scope enumeration, and known-remaining-work guard.
 
 ## 01_AGENT_RUNTIME — load by execution need
 
@@ -34,6 +35,7 @@ This index is optimized for selective loading. Do not read every file on every t
 - `01_AGENT_RUNTIME/07_PARALLEL_WORK_AND_GIT_DISCIPLINE.md` — parallel ownership and integration conflict control.
 - `01_AGENT_RUNTIME/08_FAILURE_ESCALATION_AND_RECOVERY.md` — recoverable failure, blockers, escalation, and continued unaffected work.
 - `01_AGENT_RUNTIME/09_ACTION_BIAS_AND_PLANNING_BUDGET.md` — prevents endless planning and repeated redesign.
+- `01_AGENT_RUNTIME/10_AUTONOMOUS_CONTINUATION_CONTROLLER.md` — executable post-task/post-milestone continuation loop and blocker classification.
 
 ## 02_SPEC_FACTORY — load when generating or materially revising a Product SPEC
 
@@ -45,6 +47,7 @@ This index is optimized for selective loading. Do not read every file on every t
 - `02_SPEC_FACTORY/06_REQUIREMENT_QUALITY_LINT.md`
 - `02_SPEC_FACTORY/07_CAPABILITY_PROFILE_SELECTION.md`
 - `02_SPEC_FACTORY/08_SPEC_FREEZE_AND_CHANGE_MANAGEMENT.md`
+- `02_SPEC_FACTORY/09_RELEASE_GOAL_AND_SCOPE_CLOSURE.md`
 
 ## 03_ENGINEERING — load by implementation surface
 
@@ -71,6 +74,7 @@ This index is optimized for selective loading. Do not read every file on every t
 - `04_QUALITY/07_E2E_STABILITY_AND_MAINTENANCE.md`
 - `04_QUALITY/08_SECURITY_TEST_BASELINE.md`
 - `04_QUALITY/09_EVIDENCE_LEDGER_AND_COMPLETION_AUDIT.md`
+- `04_QUALITY/10_AGENT_BEHAVIOR_REGRESSION_TESTS.md` — pressure tests for false termination, scope collapse, blocker misuse, and forced-boundary recovery.
 
 ## 05_OPERATIONS — load when the Product SPEC makes the concern applicable
 
@@ -89,6 +93,8 @@ This index is optimized for selective loading. Do not read every file on every t
 - `06_TEMPLATES/REQUIREMENT_COVERAGE_MATRIX.md`
 - `06_TEMPLATES/REQUIREMENT_TEMPLATE.md`
 - `06_TEMPLATES/TASK_TEMPLATE.md`
+- `06_TEMPLATES/PROJECT_GOAL_TEMPLATE.md`
+- `06_TEMPLATES/EXECUTION_STATE_TEMPLATE.md`
 
 ## 07_SKILLS — task-scoped specialist capabilities
 
@@ -115,3 +121,9 @@ Start with `07_SKILLS/01_SKILL_ROUTER.md`; do not load this whole directory by d
 - `07_SKILLS/skills/forgespec-release-verifier/SKILL.md` — final evidence-oriented release verification.
 - `07_SKILLS/skill-registry.json` — machine-readable upstream provider registry.
 - `07_SKILLS/scripts/validate_skill_system.py` — read-only standard-library validator for local skill metadata and registry/version integrity.
+
+
+## 08_FAILURE_PATTERNS — load only when diagnosing agent-control regressions
+
+- `08_FAILURE_PATTERNS/01_PARTIAL_SLICE_FALSE_TERMINATION.md` — post-task false-terminal pattern and behavioral regression test.
+- `08_FAILURE_PATTERNS/02_SCOPE_COLLAPSE_TO_REPRESENTATIVE_VARIANT.md` — prevents one representative industry/channel/module from replacing an explicit multi-variant release scope.

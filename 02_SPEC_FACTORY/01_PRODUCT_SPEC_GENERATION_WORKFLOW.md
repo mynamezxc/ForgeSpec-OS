@@ -10,7 +10,8 @@ Capture:
 - must-have vs later scope;
 - platforms and environments;
 - constraints (budget, latency, offline, regulatory, integration, hardware, team);
-- explicit non-goals.
+- explicit non-goals;
+- every explicit named scope enumeration (industries, channels, roles, modules, integrations, plans, locales, devices, deployment targets, or similar variants).
 
 ## Step 2 — Assumption register
 List assumptions by category: user, market, workflow, data, technology, integration, scale, operations. Mark each as:
@@ -55,5 +56,11 @@ Specify security, observability, migration, backup, deployment, rollback, perfor
 ## Step 9 — Testable acceptance
 Every important requirement receives an ID and acceptance criteria. Create a requirement-to-test matrix.
 
-## Step 10 — Phased delivery
-Order the roadmap to validate risks early and maintain deployable increments. Do not define “MVP” as fake architecture that must be discarded.
+## Step 10 — Release goal and scope closure
+Create `07_DELIVERY/RELEASE_GOAL_AND_SCOPE.md` with a machine-checkable terminal predicate, mandatory scope inventory, release gates, explicit non-goals, and blocker semantics. Preserve multi-item scope lists instead of collapsing them into one example.
+
+## Step 11 — Phased delivery
+Order the roadmap to validate risks early and maintain deployable increments. Do not define “MVP” as fake architecture that must be discarded. State which release obligations remain after every phase so a coding agent cannot interpret a phase boundary as the requested delivery boundary.
+
+## Step 12 — Initialize execution state
+Create `WORKLOG/PROJECT_GOAL.md`, `WORKLOG/EXECUTION_STATE.md`, and `WORKLOG/CHECKPOINT.md` from the release goal. The initial execution state must identify the first executable task while preserving the complete release scope.

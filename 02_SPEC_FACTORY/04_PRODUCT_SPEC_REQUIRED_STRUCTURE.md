@@ -44,10 +44,13 @@ SPEC/<product>/
     BENCHMARK_PLAN.md
     SKILL_AND_TOOL_ACTIVATION_PLAN.md
   07_DELIVERY/
+    RELEASE_GOAL_AND_SCOPE.md
     PHASES_AND_MILESTONES.md
     BACKLOG.md
     RISKS_AND_ASSUMPTIONS.md
   WORKLOG/
+    PROJECT_GOAL.md
+    EXECUTION_STATE.md
     CHECKPOINT.md
     DECISIONS.md
     OPEN_QUESTIONS.md
@@ -59,3 +62,6 @@ The generator may add/remove files when justified. The structure serves clarity,
 `06_QUALITY/SKILL_AND_TOOL_ACTIVATION_PLAN.md` should describe capabilities and evidence needs first. External provider names are optional/replaceable unless the product itself depends on a specific provider.
 
 Use `06_TEMPLATES/SKILL_ACTIVATION_PLAN_TEMPLATE.md` as a starting point when specialist capabilities materially affect delivery or release evidence.
+
+
+`07_DELIVERY/RELEASE_GOAL_AND_SCOPE.md` must make the requested delivery boundary machine-checkable and preserve mandatory multi-item scope enumerations. `WORKLOG/PROJECT_GOAL.md` and `WORKLOG/EXECUTION_STATE.md` are execution artifacts derived from that release contract and updated by the coding agent.

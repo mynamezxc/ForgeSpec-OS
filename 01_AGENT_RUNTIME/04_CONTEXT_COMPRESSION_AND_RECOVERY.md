@@ -3,7 +3,7 @@
 Context compression must not destroy project truth.
 
 ## Before compression / long-session checkpoint
-Write or update a durable checkpoint containing:
+First persist `WORKLOG/PROJECT_GOAL.md` and `WORKLOG/EXECUTION_STATE.md`, then write or update a durable checkpoint containing:
 - current product goal;
 - current milestone;
 - active task IDs and statuses;
@@ -23,12 +23,13 @@ Recommended file: `WORKLOG/CHECKPOINT.md`.
 
 ## After compression
 The agent must:
-1. Read `WORKLOG/CHECKPOINT.md`.
+1. Read `WORKLOG/PROJECT_GOAL.md`, `WORKLOG/EXECUTION_STATE.md`, then `WORKLOG/CHECKPOINT.md`.
 2. Read the target Product SPEC index and active requirement sections.
 3. Inspect repository diff/status.
 4. Verify that referenced files/tasks still exist.
 5. Re-run only cheap high-signal checks necessary to validate the checkpoint.
-6. Resume from the recorded next action.
+6. Reconcile that the Project Goal is still non-terminal/terminal correctly.
+7. Resume from the recorded next action without waiting for a new planning cycle.
 
 ## Anti-regression rules
 After compression, do not:

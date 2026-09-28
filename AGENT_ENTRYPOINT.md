@@ -1,7 +1,7 @@
 # ForgeSpec OS Agent Entrypoint
 
 **Product name:** ForgeSpec OS — Production Engineering & Agent Execution Standard  
-**Version:** 1.3.0  
+**Version:** 1.0.1  
 **Audience:** coding agents, verifier agents, subagents, SPEC-generation agents  
 **Purpose:** machine-oriented execution entrypoint. This file is not the public project overview.
 
@@ -18,13 +18,15 @@ Before implementation or specification generation:
 1. Read `AGENT_ENTRYPOINT.md`.
 2. Read `00_GOVERNANCE/01_PRECEDENCE_SCOPE_AND_CONFLICTS.md`.
 3. Read `00_GOVERNANCE/05_RULE_CLASSIFICATION.md`.
-4. Read `CAPABILITY_ACTIVATION_MATRIX.md` and activate only profiles justified by the Product SPEC.
-5. Read `07_SKILLS/01_SKILL_ROUTER.md` when the current work can materially benefit from a specialist skill; route only the minimum required skills.
-6. Read the target Product SPEC entrypoint: `SPEC/<product-name>/PRODUCT_SPEC_ENTRYPOINT.md`.
-7. Read the Product SPEC files required by the active milestone and task.
-8. Read the latest `WORKLOG/CHECKPOINT.md`, decisions, open questions, and evidence state when they exist.
-9. Inspect the actual repository before proposing structural changes.
-10. Load additional ForgeSpec OS rules by task/risk using `AGENT_FILE_INDEX.md`; do not load unrelated material merely because it exists.
+4. Read `00_GOVERNANCE/07_PROJECT_GOAL_AND_TERMINAL_STATE.md`.
+5. Read `01_AGENT_RUNTIME/10_AUTONOMOUS_CONTINUATION_CONTROLLER.md`.
+6. Read `CAPABILITY_ACTIVATION_MATRIX.md` and activate only profiles justified by the Product SPEC.
+7. Read `07_SKILLS/01_SKILL_ROUTER.md` when the current work can materially benefit from a specialist skill; route only the minimum required skills.
+8. Read the target Product SPEC entrypoint: `SPEC/<product-name>/PRODUCT_SPEC_ENTRYPOINT.md`.
+9. Read the Product SPEC files required by the active milestone and task.
+10. Read `WORKLOG/PROJECT_GOAL.md`, `WORKLOG/EXECUTION_STATE.md`, and the latest `WORKLOG/CHECKPOINT.md`, decisions, open questions, and evidence state when they exist.
+11. Inspect the actual repository before proposing structural changes.
+12. Load additional ForgeSpec OS rules by task/risk using `AGENT_FILE_INDEX.md`; do not load unrelated material merely because it exists.
 
 For a new idea that does not yet have a Product SPEC, use `PROMPT_BUILD_PRODUCT_SPEC.md` and the `02_SPEC_FACTORY` rules first.
 
@@ -44,6 +46,8 @@ A ForgeSpec OS default never overrides an explicit product decision merely becau
 
 The agent must:
 
+- create or reconcile the machine-oriented Project Goal for the complete requested delivery before treating any milestone as a terminal boundary;
+- preserve all mandatory named scope enumerations and map them to requirements/evidence;
 - convert requirements into traceable tasks with dependencies, risk, owner, and expected evidence;
 - inspect before editing;
 - implement coherent vertical production slices rather than disconnected demo layers;
@@ -55,7 +59,18 @@ The agent must:
 - checkpoint before context compression, risky refactors, long handoffs, or execution boundaries;
 - recover from compressed context using recorded state plus repository truth, not memory-based re-planning;
 - keep unresolved ambiguity explicit and continue all unaffected work;
+- after each completed task/milestone, transition back to next-task selection until the Project Goal reaches a valid terminal state;
 - continue until a valid stop condition is reached.
+
+## 3A. Project Goal contract
+
+The execution unit is the full requested Project Goal, not the current task or milestone.
+
+Before implementation, create or validate `SPEC/<product-name>/WORKLOG/PROJECT_GOAL.md` and `WORKLOG/EXECUTION_STATE.md`. The goal must preserve the complete release scope, including explicit multi-item lists such as industries, channels, roles, modules, integrations, or locales.
+
+`TASK_DONE`, `MILESTONE_DONE`, and passing local tests are non-terminal states. When a task or milestone finishes, the main agent must select the next executable mandatory task.
+
+If the agent can identify remaining in-scope work in its own summary, that is proof that the goal is non-terminal and continuation is required.
 
 ## 4. Completion contract
 
@@ -199,4 +214,6 @@ Do not stop because:
 - one test layer passed;
 - the remaining work is inconvenient.
 
-Stop only under the rules in `00_GOVERNANCE/02_STATUS_STOP_AND_CONTINUATION_RULES.md`, such as verified completion, an explicit user stop/change, or a genuine external blocker after all unaffected work has been advanced.
+Stop only under the rules in `00_GOVERNANCE/02_STATUS_STOP_AND_CONTINUATION_RULES.md` and `00_GOVERNANCE/07_PROJECT_GOAL_AND_TERMINAL_STATE.md`, such as verified Project Goal completion, an explicit user stop/change, or a genuine global external blocker after all unaffected work has been advanced.
+
+A response boundary, passing build, passing local test suite, completed first slice, or milestone report is not a stop condition. If the host forces a boundary before terminal completion, persist `CONTINUATION_REQUIRED` and the exact next action.

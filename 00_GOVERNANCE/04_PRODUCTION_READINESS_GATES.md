@@ -2,6 +2,13 @@
 
 Use risk-based gates. Not every project needs every technology, but every applicable risk must be addressed.
 
+## Gate 0 — Project Goal closure
+- `WORKLOG/PROJECT_GOAL.md` matches the current Product SPEC and user-requested delivery.
+- Every release-blocking scope item/variant is complete with evidence or explicitly removed by authoritative scope change.
+- No executable mandatory work remains.
+- No release-critical check remains skipped merely because the local environment could not run it.
+- `WORKLOG/EXECUTION_STATE.md` is no longer `CONTINUE` or `CONTINUATION_REQUIRED`.
+
 ## Gate A — Functional completeness
 - Requirement coverage matrix has no critical gaps.
 - Key user journeys work end-to-end with real persistence/integration.

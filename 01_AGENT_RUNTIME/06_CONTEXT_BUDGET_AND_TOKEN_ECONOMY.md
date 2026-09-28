@@ -5,11 +5,13 @@ The objective is not minimal context; it is **minimum sufficient context for cor
 ## Context tiers
 ### Tier 0 — Always hot
 Keep concise:
+- Project Goal ID/state and terminal predicate;
+- mandatory scope coverage summary;
 - current objective;
 - current task IDs;
 - critical invariants;
 - latest blockers;
-- next actions.
+- next executable action and 2–6 following candidates.
 
 ### Tier 1 — Pull when task touches it
 - relevant Product SPEC sections;

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "forgespec_version": "1.3.0",
+  "forgespec_version": "1.0.1",
   "researched_at": "2026-09-28",
   "policy": "External providers are optional, pinned, reviewed dependencies. Product SPEC and ForgeSpec invariants retain authority.",
   "providers": [

@@ -1,7 +1,7 @@
 {
   "name": "ForgeSpec OS",
-  "full_name": "ForgeSpec OS \u2014 Production Engineering & Agent Execution Standard",
-  "version": "1.3.0",
+  "full_name": "ForgeSpec OS — Production Engineering & Agent Execution Standard",
+  "version": "1.0.1",
   "public_readme": "README.md",
   "agent_entrypoint": "AGENT_ENTRYPOINT.md",
   "product_spec_entrypoint": "PRODUCT_SPEC_ENTRYPOINT.md",
@@ -43,5 +43,19 @@
     "product_spec_overrides_skill_style_preferences": true,
     "active_security_scanning_requires_authorized_scope": true,
     "preload_full_skill_catalog": false
-  }
+  },
+  "goal_states": [
+    "ACTIVE",
+    "VERIFYING_RELEASE",
+    "BLOCKED_GLOBAL",
+    "PRODUCTION_READY"
+  ],
+  "project_goal_required_for_substantial_implementation": true,
+  "task_done_is_not_project_done": true,
+  "known_remaining_executable_work_forbids_terminal_completion": true,
+  "scope_enumeration_preservation_required": true,
+  "vertical_slice_is_order_not_scope_boundary": true,
+  "post_task_continuation_required": true,
+  "forced_host_boundary_state": "CONTINUATION_REQUIRED",
+  "global_stop_requires_global_blocker_or_terminal_goal": true
 }

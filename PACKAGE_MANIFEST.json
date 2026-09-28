@@ -1,6 +1,6 @@
 {
   "name": "ForgeSpec OS — Production Engineering & Agent Execution Standard",
-  "version": "1.3.0",
+  "version": "1.0.1",
   "packaged_at": "2026-09-28",
   "language": "English",
   "agent_entrypoint": "AGENT_ENTRYPOINT.md",
@@ -12,6 +12,7 @@
   "notes": [
     "External providers are not vendored; they are optional reviewed and pinned dependencies.",
     "Product SPEC retains product authority; skills remain task-scoped capability modules.",
-    "Use 07_SKILLS/04_SKILL_SECURITY_GATE.md before enabling a new external skill."
+    "Use 07_SKILLS/04_SKILL_SECURITY_GATE.md before enabling a new external skill.",
+    "v1.0.1 adds Project Goal terminal-state control, autonomous continuation, scope-enumeration preservation, and false-termination prevention."
   ]
 }

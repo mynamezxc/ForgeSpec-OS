@@ -16,6 +16,10 @@ A proposed rule belongs in ForgeSpec OS only when the answer remains strong afte
 - Does it encourage executable work rather than endless planning?
 - Does it avoid repeated expensive full-suite testing without weakening risk coverage?
 - Could it create a loop where the agent can never legitimately finish?
+- Does it preserve the distinction between task/milestone completion and Project Goal terminal completion?
+- After a successful task, does the control flow select the next executable mandatory task instead of implicitly ending the session?
+- Can explicit multi-item product scope be preserved without one representative example replacing the whole list?
+- Are local/task-scoped blockers prevented from becoming false global stop conditions?
 - Does it preserve explicit user and Product SPEC authority?
 - Can the rule be expressed with a clear proof obligation or observable behavior?
 - Is the rule already better placed in a Product SPEC, ADR, repository convention, or capability-specific profile?
@@ -30,3 +34,16 @@ If the rule fails this review, keep it at the narrowest correct scope instead of
 - [ ] Security scanning language restricts active testing to owned/explicitly authorized scope.
 - [ ] Skill output is evidence/findings, not automatic `DONE` authority.
 - [ ] Skill docs stay English and provider-neutral ForgeSpec rules do not copy large third-party copyrighted instruction bodies.
+
+
+## Agent-control regression gate
+
+Before releasing changes to execution, stop, goal, task-graph, or context-recovery rules:
+
+- [ ] Run/reason through `04_QUALITY/10_AGENT_BEHAVIOR_REGRESSION_TESTS.md`.
+- [ ] First-slice completion automatically selects further mandatory work.
+- [ ] Local/build test success cannot close incomplete release scope.
+- [ ] Explicit multi-variant scope remains enumerable and release-blocking until complete.
+- [ ] Local/task blockers cannot stop unrelated executable work.
+- [ ] Host-enforced boundaries preserve `CONTINUATION_REQUIRED`.
+- [ ] Fully satisfied bounded scope can still terminate cleanly without infinite optimization.

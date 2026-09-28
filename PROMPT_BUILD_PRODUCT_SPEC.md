@@ -28,20 +28,25 @@ Mandatory behavior:
 11. Include security, privacy, data lifecycle, migrations, backup/recovery, observability, deployment, rollback, performance, capacity, cost, configuration, supportability, and debugging needs.
 12. Create stable requirement IDs and objectively testable acceptance criteria.
 13. Create a requirement-to-test/evidence matrix so implementation completion can be audited.
-14. Create a phased implementation roadmap made of real vertical slices. Do not define a fake UI-only MVP unless the requested product is explicitly a prototype.
+14. Create a phased implementation roadmap made of real vertical slices. Do not define a fake UI-only MVP unless the requested product is explicitly a prototype. State explicitly that slices define implementation order, not the full requested delivery boundary.
 15. Explicitly list non-goals, deferred capabilities, future extension points, and triggers for revisiting rejected complexity so coding agents do not overbuild now.
 16. Record risks, assumptions, rejected alternatives, trade-offs, and revisit triggers.
 17. When an important ambiguity cannot be safely resolved, record it in `WORKLOG/OPEN_QUESTIONS.md`, isolate the affected scope, and continue specifying unaffected areas.
 18. Perform a final self-review against ForgeSpec OS and identify missing production concerns before declaring the Product SPEC complete.
 19. Check that the Product SPEC contains enough business logic and acceptance detail that a coding agent cannot legitimately replace core behavior with hardcoded UI and still satisfy completion gates.
-20. Define which specialist capability profiles are actually justified (UI/UX, accessibility, browser E2E, web performance, component design system, security, supply chain, AI/LLM security). Do not require external tools merely because ForgeSpec lists them.
-21. When a specialist provider is recommended, state the capability and required evidence first; list a provider as replaceable implementation guidance, not as product behavior.
-20. Check that the architecture remains extensible without pre-building speculative systems that the current product does not need.
+20. Preserve every explicit scope enumeration from the user's intent (for example industries, channels, roles, modules, integrations, plans, locales, devices, or deployment targets) as a traceable scope inventory. Do not collapse a full list into one representative example.
+21. Create a machine-checkable release goal and terminal completion predicate so the coding agent cannot reinterpret "first slice" or "next milestone" as the requested delivery boundary.
+22. Define which specialist capability profiles are actually justified (UI/UX, accessibility, browser E2E, web performance, component design system, security, supply chain, AI/LLM security). Do not require external tools merely because ForgeSpec lists them.
+23. When a specialist provider is recommended, state the capability and required evidence first; list a provider as replaceable implementation guidance, not as product behavior.
+24. Check that the architecture remains extensible without pre-building speculative systems that the current product does not need.
 
 Minimum output structure must follow `02_SPEC_FACTORY/04_PRODUCT_SPEC_REQUIRED_STRUCTURE.md`, adapted only when there is a documented reason.
 
 At the end, produce at minimum:
 - `SPEC/<product-name>/PRODUCT_SPEC_ENTRYPOINT.md` as the machine-oriented Product SPEC index and reading order;
+- `SPEC/<product-name>/07_DELIVERY/RELEASE_GOAL_AND_SCOPE.md` defining the complete requested delivery boundary, mandatory scope inventory, terminal predicate, and release gates;
+- `SPEC/<product-name>/WORKLOG/PROJECT_GOAL.md` initialized from the release goal;
+- `SPEC/<product-name>/WORKLOG/EXECUTION_STATE.md` with `CONTINUE` and the first executable task;
 - `SPEC/<product-name>/WORKLOG/CHECKPOINT.md` as the initial coding-agent continuation state;
 - `SPEC/<product-name>/06_QUALITY/ACCEPTANCE_MATRIX.md` mapping critical requirements to expected evidence;
 - `SPEC/<product-name>/07_DELIVERY/PHASES_AND_MILESTONES.md` with implementation order, dependencies, test gates, and release gates;
