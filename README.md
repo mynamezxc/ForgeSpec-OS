@@ -10,7 +10,7 @@ It is designed around a simple separation of authority:
 
 This separation prevents a global agent rulebook from quietly rewriting domain behavior while still enforcing production discipline across very different projects.
 
-**Current version:** 1.3.0
+**Current version:** 1.0.0
 
 ---
 
@@ -145,7 +145,7 @@ A repository using ForgeSpec OS can use:
 
 ## Curated specialist skill ecosystem
 
-ForgeSpec OS 1.3 adds a task-scoped skill router for UI/UX, browser verification, accessibility, web quality, security, supply-chain review, AI/LLM security, and release verification.
+ForgeSpec OS 1.0.0 adds a task-scoped skill router for UI/UX, browser verification, accessibility, web quality, security, supply-chain review, AI/LLM security, and release verification.
 
 The design deliberately avoids copying a large external skill pack into every agent session. Instead:
 
